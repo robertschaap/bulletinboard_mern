@@ -13,7 +13,20 @@ let commentObject = [
 
 class ReadPage extends Component {
   state = {
-    comments: commentObject
+    comments: commentObject,
+    value: 'desc'
+  }
+
+  sortComments = (event) => {
+    console.log(event.target.value);
+    this.setState({
+      ...this.state,
+      value: event.target.value
+    })
+  }
+
+  loadMoreComments = () => {
+    console.log('moar commentz!');
   }
 
   render() {
@@ -25,15 +38,15 @@ class ReadPage extends Component {
       <main>
         <section id="comments">
           <h2>Read Something</h2>
-          <select id="sortbtn" name="com_sort">
-              <option value="desc" selected="selected">Newest First</option>
+          <select id="sortbtn" value={this.state.value} onChange={this.sortComments}>
+              <option value="desc">Newest First</option>
               <option value="asc">Oldest First</option>
           </select>
           {comment}
         </section>
 
         <section>
-          <button id="loadcomments" class="wrapper">Load More Comments</button>
+          <button id="loadcomments" className="wrapper" onClick={this.loadMoreComments}>Load More Comments</button>
         </section>
       </main>
     );
