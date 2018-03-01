@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import Comment from '../../components/Comment/Comment';
+import React, { Component } from "react";
+import Comment from "../../components/Comment/Comment";
 
 let commentObject = [
   { image: "Bunny", title: "Title", name: "Name", body: "Body" },
   { image: "Bunny", title: "Title", name: "Name", body: "Body" },
   { image: "Bunny", title: "Title", name: "Name", body: "Body" },
   { image: "Bunny", title: "Title", name: "Name", body: "Body" },
-]
+];
 
 // Fetch object, add to state, click -load-more- appends new object
 // Change sort order overwrites states
@@ -14,7 +14,7 @@ let commentObject = [
 class ReadPage extends Component {
   state = {
     comments: commentObject,
-    value: 'desc'
+    value: "desc"
   }
 
   sortComments = (event) => {
@@ -22,16 +22,16 @@ class ReadPage extends Component {
     this.setState({
       ...this.state,
       value: event.target.value
-    })
+    });
   }
 
   loadMoreComments = () => {
-    console.log('moar commentz!');
+    console.log("moar commentz!");
   }
 
   render() {
     let comment = this.state.comments.map((item, index) => {
-      return <Comment key={index} image={item.image} title={item.title} name={item.name} body={item.body}/>
+      return <Comment key={index} image={item.image} title={item.title} name={item.name} body={item.body} />;
     });
 
     return (
@@ -51,6 +51,6 @@ class ReadPage extends Component {
       </main>
     );
   }
-};
+}
 
 export default ReadPage;
