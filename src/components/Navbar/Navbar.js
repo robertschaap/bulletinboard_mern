@@ -1,12 +1,13 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => (
   <header>
     <div className="wrapper">
       <h1>Bulletin Board</h1>
       <nav>
-        <a href="/writesomething">Write</a>
-        <a href="/readsomething">Read</a>
+        <Link to="writesomething">Write</Link>
+        <Link to="readsomething">Read</Link>
       </nav>
     </div>
   </header>
