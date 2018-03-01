@@ -10,6 +10,6 @@ const Layout = ({ children }) => (
     {children}
     <Footer />
   </Aux>
-)
+);
 
 export default Layout;
