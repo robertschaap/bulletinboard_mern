@@ -1,22 +1,42 @@
 const express = require("express");
 const app = express();
 const myport = process.env.PORT || 3000;
+const bodyParser = require("body-parser");
 
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.listen(myport, () => console.log(`Now listening on port ${myport}`));
 
 // Database Setup
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost:27017/flashcardapp", { useMongoClient: true });
+const useDatabase = "bulletinboard";
+mongoose.connect("mongodb://localhost:27017/bulletinboard");
 mongoose.connection.on("error", console.error.bind(console), "MDB Connect Err");
 mongoose.Promise = global.Promise;
 
 const Comment = require("./models/comment");
+const Populate = require("./models/Populate");
+// Populate.setupComments();
+// mongoose.connection.dropDatabase();
 
 // Routes
 app.get("/api/comment/", (req, res) => {
-  res.json("retrieved");
+
+  let { offset, sort } = req.query;
+
+  Comment.find()
+    .sort({ createdAt: sort })
+    .limit(4)
+    .skip(+offset)
+    .then(result => { 
+      console.log(result)
+      res.json(result)
+    });
 });
 
 app.post("/api/comment/new", (req, res) => {
+  console.log(req.body);
   res.json("posted");
+  // Validate req.comment object and push to model
+  // Comment.new()
 });

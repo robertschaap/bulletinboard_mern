@@ -25,6 +25,7 @@
     "react"
   ],
   "rules": {
+    "no-console": "off",
     "keyword-spacing": ["error", {
       "before": true
     }],
