@@ -11,36 +11,63 @@ class Comments extends Component {
 
   sortComments = (event) => {
 
-    // API call to db
-    // this.setState({
-    //   comments: arrayFromAPI,
-    //   value: event.target.value
-    // });
+    let { sortDirection } = this.state;
+    let newSortDirection = event.target.value;
+
+    if (sortDirection !== newSortDirection) {
+      fetch(`/api/comment?offset=${0}&sort=${newSortDirection}`)
+        .then(res => res.json())
+        .then(data => {
+          
+          this.setState({
+            ...this.state,
+            comments: data,
+            sortDirection: newSortDirection,
+            offset: 0
+          });
+        });
+    }
+  }
+
+  loadComments = () => {
+
+    const { offset, sortDirection } = this.state;
+
+    fetch(`/api/comment?offset=${offset}&sort=${sortDirection}`)
+      .then(res => res.json())
+      .then(data => {
+        
+        this.setState({
+          ...this.state,
+          comments: data
+        });
+      });
   }
 
   loadMoreComments = () => {
-    // const newComments = [
-    //   ...this.state.comments,
-    //   ...nextArrayFromAPI
-    // ];
 
-    // this.setState({
-    //   ...this.state,
-    //   comments: newComments
-    //   offset: this.state.offset + 4
-    // });
+    const incr = 4;
+    const { offset, sortDirection } = this.state;
+    
+    fetch(`/api/comment?offset=${offset+incr}&sort=${sortDirection}`)
+    .then(res => res.json())
+    .then(data => {
+
+      const newComments = [
+        ...this.state.comments,
+        ...data
+      ];
+  
+      this.setState({
+        ...this.state,
+        comments: newComments,
+        offset: this.state.offset + incr
+      });
+    }); 
   }
 
   componentDidMount() {
-    const { offset, sortDirection } = this.state;
-    fetch(`/api/comment?offset=${offset}&sort=${sortDirection}`)
-    .then(res => res.json())
-    .then(data => {
-      this.setState({
-        ...this.state,
-        comments: data
-      });
-    });
+    this.loadComments();
   }
 
   render() {

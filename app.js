@@ -9,13 +9,12 @@ app.listen(myport, () => console.log(`Now listening on port ${myport}`));
 
 // Database Setup
 const mongoose = require("mongoose");
-const useDatabase = "bulletinboard";
 mongoose.connect("mongodb://localhost:27017/bulletinboard");
 mongoose.connection.on("error", console.error.bind(console), "MDB Connect Err");
 mongoose.Promise = global.Promise;
 
 const Comment = require("./models/comment");
-const Populate = require("./models/Populate");
+// const Populate = require("./models/Populate");
 // Populate.setupComments();
 // mongoose.connection.dropDatabase();
 
@@ -29,14 +28,17 @@ app.get("/api/comment/", (req, res) => {
     .limit(4)
     .skip(+offset)
     .then(result => { 
-      console.log(result)
-      res.json(result)
+      res.json(result);
     });
 });
 
 app.post("/api/comment/new", (req, res) => {
-  console.log(req.body);
-  res.json("posted");
-  // Validate req.comment object and push to model
-  // Comment.new()
+
+  let formDetails = req.body;
+  
+  Comment.new(formDetails)
+    .then(result => {
+      console.log(result);
+      res.json("posted");
+    });
 });

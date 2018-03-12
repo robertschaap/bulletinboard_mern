@@ -10,6 +10,17 @@ class Form extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
+    console.log(this.state);
+
+    fetch("/api/comment/new", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(this.state)
+    })
+    .then(res => res.json())
+    .then(console.log);
   }
 
   handleChange = (event) => {
