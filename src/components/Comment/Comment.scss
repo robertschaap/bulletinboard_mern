@@ -1,0 +1,38 @@
+.component {
+  margin-bottom: 1rem;
+  background-color: rgba(230,255,245,0.5);
+
+  &:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+
+  h3 {
+    margin: 0;
+    font-weight: 400;
+  }
+
+  h4 {
+    margin: 0;
+    font-weight: 400;
+    border-bottom: 1px solid #003399;
+  }
+}
+
+.body {
+  width: calc(100% - 120px);
+  float: right;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.info {
+  width: 120px;
+  float: left;
+  padding: 1rem;
+
+  img {
+    border-radius: 50%;
+  }
+}

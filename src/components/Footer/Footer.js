@@ -1,8 +1,9 @@
 import React from "react";
+import styles from "./Footer.scss";
 
 const Footer = () => (
-  <footer>
-    <div className="wrapper">
+  <footer className={styles.component}>
+    <div className={styles.wrapper}>
       <p>Robert Schaap 2018</p>
     </div>
   </footer>

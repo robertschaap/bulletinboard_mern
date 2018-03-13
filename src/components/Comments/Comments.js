@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Comment from "../../components/Comment/Comment";
+import styles from "./Comments.scss";
 
 class Comments extends Component {
   state = {
@@ -81,18 +82,23 @@ class Comments extends Component {
     );
 
     return (
-      <main>
-        <section id="comments">
+      <main className={styles.component}>
+        <section className={styles.wrapper}>
           <h2>Read Something</h2>
-          <select id="sortbtn" value={this.state.sortDirection} onChange={this.sortComments}>
+          <select
+            className={styles.sortbtn}
+            value={this.state.sortDirection}
+            onChange={this.sortComments}>
               <option value="desc">Newest First</option>
               <option value="asc">Oldest First</option>
           </select>
           {comment}
         </section>
 
-        <section>
-          <button id="loadcomments" className="wrapper" onClick={this.loadMoreComments}>Load More Comments</button>
+        <section className={styles.wrapper}>
+          <button onClick={this.loadMoreComments}>
+            Load More Comments
+          </button>
         </section>
       </main>
     );

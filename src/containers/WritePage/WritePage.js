@@ -4,12 +4,7 @@ import Layout from "../Layout/Layout";
 
 const WritePage = () => (
   <Layout>
-    <main>
-      <section id="commentform">
-        <h2>Write Something</h2>
-        <Form />
-      </section>
-    </main>
+    <Form />
   </Layout>
 );
 
