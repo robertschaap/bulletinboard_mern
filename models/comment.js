@@ -8,9 +8,14 @@ const CommentSchema = Schema({
   name: String
 }, { timestamps: true });
 
-CommentSchema.statics.new = entry => {
-  let record = new Comment({ ...entry });
-  record.save(err => err ? err : console.log("inserted comment"));
+CommentSchema.statics.new = (title, body, avatar, name) => {
+  let record = new Comment({ 
+    title, 
+    body, 
+    avatar, 
+    name 
+  });
+  return record.save();
 };
 
 const Comment = mongoose.model("Comment", CommentSchema);

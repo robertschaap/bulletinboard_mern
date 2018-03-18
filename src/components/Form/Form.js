@@ -1,36 +1,51 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 import styles from "./Form.scss";
 
 class Form extends Component {
   state = {
-    name: "",
-    title: "",
-    body: "",
-    avatar: "bunny",
+    formData: {
+      name: "",
+      title: "",
+      body: "",
+      avatar: "bunny",
+    },
+    doRedirect: false
   }
 
   handleSubmit = (event) => {
     event.preventDefault();
-    console.log(this.state);
 
     fetch("/api/comment/new", {
       method: "post",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(this.state)
+      body: JSON.stringify(this.state.formData)
     })
-    .then(res => res.json())
-    .then(console.log);
+    .then(() =>
+      this.setState({ doRedirect: true })
+    );
   }
 
   handleChange = (event) => {
     this.setState({
-      [event.target.name]: event.target.value
+      formData: {
+        ...this.state.formData,
+        [event.target.name]: event.target.value
+      }
     });
   }
 
   render() {
+
+    const doRedirect = this.state.doRedirect;
+    if (doRedirect) {
+      return (
+        <Redirect to="/readsomething" push />
+      );
+    }
+
     return (
       <main className={styles.component}>
         <section>

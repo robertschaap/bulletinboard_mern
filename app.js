@@ -34,11 +34,8 @@ app.get("/api/comment/", (req, res) => {
 
 app.post("/api/comment/new", (req, res) => {
 
-  let formDetails = req.body;
-  
-  Comment.new(formDetails)
-    .then(result => {
-      console.log(result);
-      res.json("posted");
-    });
+  let { title, body, avatar, name } = req.body;
+
+  Comment.new(title, body, avatar, name)
+    .then(result => res.json(result));
 });
