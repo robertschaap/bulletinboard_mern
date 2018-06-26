@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import Aux from "../containers/Aux";
 
-import ReadPage from "./ReadPage/ReadPage";
-import WritePage from "./WritePage/WritePage";
+import ReadPage from "./ReadPage";
+import WritePage from "./WritePage";
 
 class App extends Component {
   render() {

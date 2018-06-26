@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Comment from "../../components/Comment/Comment";
+import Comment from "../../components/Comment/";
 import styles from "./Comments.scss";
 import { connect } from "react-redux";
 import { getComments } from "../../redux";
@@ -31,8 +31,8 @@ class Comments extends Component {
   }
 
   render() {
-    let comment = this.props.comments.map((item, index) => 
-      (<Comment 
+    let comment = this.props.comments.map((item, index) =>
+      (<Comment
         key={index}
         image={item.avatar}
         title={item.title}

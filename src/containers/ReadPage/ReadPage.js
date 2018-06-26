@@ -1,6 +1,6 @@
 import React from "react";
-import Comments from "../../components/Comments/Comments";
-import Layout from "../Layout/Layout";
+import Comments from "../../components/Comments";
+import Layout from "../Layout";
 
 const ReadPage = () => (
   <Layout>
