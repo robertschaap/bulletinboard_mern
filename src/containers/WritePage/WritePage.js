@@ -1,6 +1,6 @@
 import React from "react";
 import Form from "../../components/Form";
-import Layout from "../Layout";
+import Layout from "../../components/Layout";
 
 const WritePage = () => (
   <Layout>
