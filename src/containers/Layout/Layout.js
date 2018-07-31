@@ -1,15 +1,14 @@
-import React from "react";
-import Aux from "../Aux";
+import React, { Fragment } from "react";
 
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 
 const Layout = ({ children }) => (
-  <Aux>
+  <Fragment>
     <Navbar />
     {children}
     <Footer />
-  </Aux>
+  </Fragment>
 );
 
 export default Layout;
