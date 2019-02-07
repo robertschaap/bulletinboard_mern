@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.listen(myport, () => console.log(`Now listening on port ${myport}`));
+app.listen(myport, () => console.log(`Now listening  http://localhost:${myport}`));
 
 // Database Setup
 const mongoose = require("mongoose");
@@ -27,7 +27,7 @@ app.get("/api/comment/", (req, res) => {
     .sort({ createdAt: sort })
     .limit(4)
     .skip(+offset)
-    .then(result => { 
+    .then(result => {
       res.json(result);
     });
 });
