@@ -24,4 +24,9 @@ const comments = [
   { title: "Oh danny boy", body: "The pipes? Crap, I forgot how the song goes", avatar: "hippo", name: "Danny" },
 ];
 
-exports.setupComments = () => comments.forEach(entry => Comment.new(...entry));
+exports.setupComments = () => comments.forEach(entry => Comment.new(
+  entry.title,
+  entry.body,
+  entry.avatar,
+  entry.name,
+));
