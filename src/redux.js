@@ -1,6 +1,7 @@
 import { createStore, combineReducers } from "redux";
 
 const LOAD_COMMENTS = "LOAD_COMMENTS";
+const SORT_COMMENTS = "SORT_COMMENTS";
 
 const initialState = {
   comments: [],
@@ -18,9 +19,14 @@ export const comments = (state = initialState, action) => {
         ...action.payload
       ],
       offset: state.offset + 4,
-      sortDirection: action.sortDirection,
     };
-
+  case SORT_COMMENTS:
+    return {
+      ...state,
+      comments: [],
+      offset: 0,
+      sortDirection: state.sortDirection === "desc" ? "asc" : "desc",
+    };
   default:
     return state;
   }
@@ -37,7 +43,7 @@ export const loadComments = (payload, sortDirection) => ({
 });
 
 export const sortComments = (payload) => ({
-  type: "SortComments",
+  type: SORT_COMMENTS,
   payload
 });
 

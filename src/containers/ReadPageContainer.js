@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { loadComments, getComments, getOffset, getSortDirection } from "../redux";
+import { loadComments, sortComments, getComments, getOffset, getSortDirection } from "../redux";
 
 import Comments from "../components/Comments";
 
@@ -9,37 +9,33 @@ class ReadPageContainer extends React.Component {
     this.fetchComments();
   }
 
-  fetchComments = (changeSort) => {
-    let offset = changeSort ? 0 : this.props.offset;
-    let sortDirection = changeSort ? changeSort : this.props.sortDirection;
-
-    fetch(`/api/comment?offset=${offset}&sort=${sortDirection}`)
-      .then(res => res.json())
-      .then(data => {
-        this.props.loadComments(data, sortDirection);
-      });
+  componentDidUpdate(prevProps) {
+    if (prevProps.sortDirection !== this.props.sortDirection) {
+      console.log(this.props);
+      this.fetchComments(true);
+    }
   }
 
-  sortComments = (event) => {
-    const { sortDirection } = this.props;
-    const newSortDirection = event.target.value;
-
-    if (sortDirection !== newSortDirection) {
-      this.fetchComments(newSortDirection);
-    }
+  fetchComments = () => {
+    fetch(`/api/comment?offset=${this.props.offset}&sort=${this.props.sortDirection}`)
+      .then(res => res.json())
+      .then(data => {
+        this.props.loadComments(data);
+      });
   }
 
   render() {
     const {
       comments,
       sortDirection,
+      sortComments,
     } = this.props;
 
     return (
         <Comments
           comments={comments}
           onLoadComments={() => this.fetchComments()}
-          onSortComments={this.sortComments}
+          onSortComments={sortComments}
           sortDirection={sortDirection} />
     );
   }
@@ -53,6 +49,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   loadComments,
+  sortComments,
 };
 
 export default connect(
