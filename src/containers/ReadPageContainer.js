@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { loadComments } from "../redux";
+import { loadComments, getComments, getOffset, getSortDirection } from "../redux";
 
 import Comments from "../components/Comments";
 
@@ -46,9 +46,9 @@ class ReadPageContainer extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  comments: state.reducer.comments,
-  sortDirection: state.reducer.sortDirection,
-  offset: state.reducer.offset
+  comments: getComments(state),
+  sortDirection: getSortDirection(state),
+  offset: getOffset(state),
 });
 
 const mapDispatchToProps = {

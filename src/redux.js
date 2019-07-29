@@ -41,4 +41,8 @@ export const sortComments = (payload) => ({
   payload
 });
 
+export const getComments = state => state.reducer.comments;
+export const getOffset = state => state.reducer.offset;
+export const getSortDirection = state => state.reducer.sortDirection;
+
 export const store = createStore(reducers);
