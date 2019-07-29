@@ -8,7 +8,7 @@ const initialState = {
   offset: 0
 };
 
-export const reducer = (state = initialState, action) => {
+export const comments = (state = initialState, action) => {
   switch (action.type) {
   case LOAD_COMMENTS:
     return {
@@ -27,7 +27,7 @@ export const reducer = (state = initialState, action) => {
 };
 
 export const reducers = combineReducers({
-  reducer
+  comments
 });
 
 export const loadComments = (payload, sortDirection) => ({
@@ -41,8 +41,8 @@ export const sortComments = (payload) => ({
   payload
 });
 
-export const getComments = state => state.reducer.comments;
-export const getOffset = state => state.reducer.offset;
-export const getSortDirection = state => state.reducer.sortDirection;
+export const getComments = state => state.comments.comments;
+export const getOffset = state => state.comments.offset;
+export const getSortDirection = state => state.comments.sortDirection;
 
 export const store = createStore(reducers);
