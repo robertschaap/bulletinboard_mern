@@ -1,44 +1,16 @@
 import React, { Component } from "react";
-import Comment from "../../components/Comment/";
 import styles from "./Comments.scss";
-import { connect } from "react-redux";
-import { getComments } from "../../redux";
+
+import Comment from "../../components/Comment/";
 
 class Comments extends Component {
-
-  sortComments = (event) => {
-    let { sortDirection } = this.props;
-    let newSortDirection = event.target.value;
-
-    if (sortDirection !== newSortDirection) {
-      this.loadComments(newSortDirection);
-    }
-  }
-
-  loadComments = (changeSort) => {
-    let offset = changeSort ? 0 : this.props.offset;
-    let sortDirection = changeSort ? changeSort : this.props.sortDirection;
-
-    fetch(`/api/comment?offset=${offset}&sort=${sortDirection}`)
-      .then(res => res.json())
-      .then(data => {
-        this.props.getComments(data, sortDirection);
-      });
-  }
-
-  componentDidMount() {
-    this.loadComments();
-  }
-
   render() {
-    let comment = this.props.comments.map((item, index) =>
-      (<Comment
-        key={index}
-        image={item.avatar}
-        title={item.title}
-        name={item.name}
-        body={item.body} />)
-    );
+    const {
+      comments,
+      onLoadComments,
+      onSortComments,
+      sortDirection
+    } = this.props;
 
     return (
       <main className={styles.component}>
@@ -46,16 +18,23 @@ class Comments extends Component {
           <h2>Read Something</h2>
           <select
             className={styles.sortbtn}
-            value={this.props.sortDirection}
-            onChange={this.sortComments}>
+            value={sortDirection}
+            onChange={onSortComments}>
               <option value="desc">Newest First</option>
               <option value="asc">Oldest First</option>
           </select>
-          {comment}
+          {comments.map((item, index) => (
+            <Comment
+              key={index}
+              image={item.avatar}
+              title={item.title}
+              name={item.name}
+              body={item.body} />
+          ))}
         </section>
 
         <section className={styles.wrapper}>
-          <button onClick={() => this.loadComments()}>
+          <button onClick={onLoadComments}>
             Load More Comments
           </button>
         </section>
@@ -64,17 +43,4 @@ class Comments extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  comments: state.reducer.comments,
-  sortDirection: state.reducer.sortDirection,
-  offset: state.reducer.offset
-});
-
-const mapDispatchToProps = {
-  getComments,
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Comments);
+export default Comments;
