@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 
-import ReadPage from "./ReadPage";
+import ReadPageContainer from "./ReadPageContainer";
 import WritePage from "./WritePage";
 import Layout from "../components/Layout";
 
@@ -10,9 +10,9 @@ class App extends Component {
     return (
       <BrowserRouter>
         <Layout>
-          <Route exact path="/" component={ReadPage} />
+          <Route exact path="/" component={ReadPageContainer} />
           <Route path="/writesomething" component={WritePage} />
-          <Route path="/readsomething" component={ReadPage} />
+          <Route path="/readsomething" component={ReadPageContainer} />
         </Layout>
       </BrowserRouter>
     );
