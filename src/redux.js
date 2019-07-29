@@ -30,7 +30,7 @@ export const reducers = combineReducers({
   reducer
 });
 
-export const getComments = (payload, sortDirection) => ({
+export const loadComments = (payload, sortDirection) => ({
   type: LOAD_COMMENTS,
   payload,
   sortDirection,
