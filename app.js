@@ -20,8 +20,7 @@ const Comment = require("./models/comment");
 
 // Routes
 app.get("/api/comment/", (req, res) => {
-
-  let { offset, sort } = req.query;
+  const { offset, sort } = req.query;
 
   Comment.find()
     .sort({ createdAt: sort })
@@ -33,8 +32,7 @@ app.get("/api/comment/", (req, res) => {
 });
 
 app.post("/api/comment/new", (req, res) => {
-
-  let { title, body, avatar, name } = req.body;
+  const { title, body, avatar, name } = req.body;
 
   Comment.new(title, body, avatar, name)
     .then(result => res.json(result));
