@@ -1,16 +1,12 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import { updateForm, getForm } from "../ducks/form";
 
 import Form from "../components/Form";
 
 class WritePageContainer extends React.Component {
   state = {
-    formData: {
-      name: "",
-      title: "",
-      body: "",
-      avatar: "bunny",
-    },
     doRedirect: false
   }
 
@@ -22,7 +18,7 @@ class WritePageContainer extends React.Component {
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(this.state.formData)
+      body: JSON.stringify(this.props.formData)
     })
     .then(() =>
       this.setState({ doRedirect: true })
@@ -30,12 +26,8 @@ class WritePageContainer extends React.Component {
   }
 
   handleChange = (event) => {
-    this.setState({
-      formData: {
-        ...this.state.formData,
-        [event.target.name]: event.target.value
-      }
-    });
+    const { name, value } = event.target;
+    this.props.updateForm(name, value);
   }
 
   render() {
@@ -56,4 +48,15 @@ class WritePageContainer extends React.Component {
   }
 }
 
-export default WritePageContainer;
+const mapStateToProps = (state) => ({
+  formData: getForm(state),
+});
+
+const mapDispatchToProps = {
+  updateForm,
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(WritePageContainer);
