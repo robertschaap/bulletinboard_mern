@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { loadComments, sortComments, getComments, getOffset, getSortDirection } from "../redux";
+import { loadComments, sortComments, getComments, getOffset, getSortDirection } from "../ducks/comments";
 
 import Comments from "../components/Comments";
 
