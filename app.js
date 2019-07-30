@@ -25,7 +25,7 @@ app.get("/api/comment/", (req, res) => {
   Comment.find()
     .sort({ createdAt: sort })
     .limit(4)
-    .skip(+offset)
+    .skip(Number(offset))
     .then(result => {
       res.json(result);
     });
