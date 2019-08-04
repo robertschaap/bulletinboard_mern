@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "PORT=3001 && node scripts/start.js",
+    "start": "PORT=3000 && node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom"
   },
@@ -65,7 +65,7 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.7.0"
   },
-  "proxy": "http://localhost:3000",
+  "proxy": "http://localhost:4000",
   "jest": {
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,mjs}"
