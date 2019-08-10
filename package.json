@@ -2,7 +2,7 @@
   "name": "bulletinboard_mern-stack",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
     "start": "PORT=3000 && node scripts/start.js",
     "build": "node scripts/build.js",
