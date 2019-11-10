@@ -90,7 +90,7 @@
     "react/jsx-uses-vars": "error",
     "quotes": [
       "error",
-      "double"
+      "single"
     ],
     "semi": [
       "error",
