@@ -1,7 +1,7 @@
-import React from "react";
-import styles from "./Comments.scss";
+import React from 'react';
+import styles from './Comments.scss';
 
-import Comment from "../../components/Comment/";
+import Comment from '../../components/Comment/';
 
 const Comments = (props) => {
   const {
