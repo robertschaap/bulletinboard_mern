@@ -1,10 +1,10 @@
-import React from "react";
-import styles from "./Comment.scss";
+import React from 'react';
+import styles from './Comment.scss';
 
 const Comment = ({ image, title, name, body }) => (
   <div className={styles.component}>
     <div className={styles.info}>
-      <img 
+      <img
         src={`images/${image}.png`}
         alt={image}
         width="100%" />
