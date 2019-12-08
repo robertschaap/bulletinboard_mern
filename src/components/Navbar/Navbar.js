@@ -1,6 +1,6 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import styles from "./Navbar.scss";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import styles from './Navbar.scss';
 
 const Navbar = () => (
   <header className={styles.component}>
@@ -12,7 +12,7 @@ const Navbar = () => (
           to="writesomething">
           Write
         </Link>
-        
+
         <Link
           className={styles.navlink}
           to="readsomething">
