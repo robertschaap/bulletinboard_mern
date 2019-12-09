@@ -1,9 +1,9 @@
-import React from "react";
-import { Redirect } from "react-router-dom";
-import { connect } from "react-redux";
-import { updateForm, getForm } from "../ducks/form";
+import React from 'react';
+import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { updateForm, getForm } from '../ducks/form';
 
-import Form from "../components/Form";
+import Form from '../components/Form';
 
 class WritePageContainer extends React.Component {
   state = {
@@ -13,10 +13,10 @@ class WritePageContainer extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
 
-    fetch("/api/comment/new", {
-      method: "post",
+    fetch('/api/comment/new', {
+      method: 'post',
       headers: {
-        "Content-Type": "application/json"
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify(this.props.formData)
     })
