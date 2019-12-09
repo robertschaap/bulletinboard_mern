@@ -1,9 +1,9 @@
-const LOAD_COMMENTS = "LOAD_COMMENTS";
-const SORT_COMMENTS = "SORT_COMMENTS";
+const LOAD_COMMENTS = 'LOAD_COMMENTS';
+const SORT_COMMENTS = 'SORT_COMMENTS';
 
 const initialState = {
   comments: [],
-  sortDirection: "desc",
+  sortDirection: 'desc',
   offset: 0
 };
 
@@ -23,7 +23,7 @@ export const comments = (state = initialState, action) => {
       ...state,
       comments: [],
       offset: 0,
-      sortDirection: state.sortDirection === "desc" ? "asc" : "desc",
+      sortDirection: state.sortDirection === 'desc' ? 'asc' : 'desc',
     };
   default:
     return state;
