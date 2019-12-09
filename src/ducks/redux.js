@@ -1,6 +1,6 @@
-import { createStore, combineReducers } from "redux";
+import { createStore, combineReducers } from 'redux';
 
-import { comments } from "./comments";
+import { comments } from './comments';
 
 export const reducers = combineReducers({
   comments
