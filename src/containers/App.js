@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import React, { Component } from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
 
-import ReadPageContainer from "./ReadPageContainer";
-import WritePageContainer from "./WritePageContainer";
-import Layout from "../components/Layout";
+import ReadPageContainer from './ReadPageContainer';
+import WritePageContainer from './WritePageContainer';
+import Layout from '../components/Layout';
 
 class App extends Component {
   render() {
