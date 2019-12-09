@@ -1,10 +1,10 @@
-const UPDATE_FORM = "UPDATE_FORM";
+const UPDATE_FORM = 'UPDATE_FORM';
 
 const initialState = {
-  name: "",
-  title: "",
-  body: "",
-  avatar: "bunny",
+  name: '',
+  title: '',
+  body: '',
+  avatar: 'bunny',
 };
 
 export const form = (state = initialState, action) => {
