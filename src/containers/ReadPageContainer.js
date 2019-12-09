@@ -1,8 +1,8 @@
-import React from "react";
-import { connect } from "react-redux";
-import { loadComments, sortComments, getComments, getOffset, getSortDirection } from "../ducks/comments";
+import React from 'react';
+import { connect } from 'react-redux';
+import { loadComments, sortComments, getComments, getOffset, getSortDirection } from '../ducks/comments';
 
-import Comments from "../components/Comments";
+import Comments from '../components/Comments';
 
 class ReadPageContainer extends React.Component {
   componentDidMount() {
